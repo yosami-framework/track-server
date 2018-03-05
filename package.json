@@ -1,6 +1,6 @@
 {
   "name": "track-server",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Server of track.",
   "main": "lib/index.js",
   "repository": "alfa-jpn/track-server.git",
@@ -11,7 +11,7 @@
   "author": "alfa-jpn",
   "license": "ISC",
   "dependencies": {
-    "track-server-renderer": "0.0.3"
+    "track-server-renderer": "0.0.4"
   },
   "devDependencies": {
     "eslint": "^4.17.0",
