@@ -1,9 +1,9 @@
 {
   "name": "track-server",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Server of track.",
   "main": "lib/index.js",
-  "repository": "alfa-jpn/track-server.git",
+  "repository": "yosami-framework/track-server.git",
   "scripts": {
     "linter": "eslint ./",
     "test": "ospec"

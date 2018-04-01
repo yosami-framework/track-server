@@ -1,6 +1,8 @@
 # TrackServer
 Server for track.
 
+[![Build Status](https://travis-ci.org/yosami-framework/track-server.svg?branch=master)](https://travis-ci.org/yosami-framework/track-server)
+
 ## Installation
 
 ### npm
