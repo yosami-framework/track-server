@@ -1,11 +1,13 @@
 require('./spec_helper');
 const t                   = require('track-spec');
 const path                = require('path');
+const TrackConfig         = require('track-config');
 const TrackRouter         = require('track-router');
 const Asset               = require('track-server-renderer/lib/asset');
 const TrackServerRenderer = require('track-server-renderer');
 const TrackServer         = require('../lib/index');
 const MiddlewareBase      = require('../lib/middleware_base');
+const MockController      = require('./fixtures/controllers/mock_controller');
 
 t.describe('TrackServer', () => {
   let asset = null;
@@ -54,6 +56,25 @@ t.describe('TrackServer', () => {
         t.expect(
           mockMiddleware.register.args[1] instanceof TrackServerRenderer
         ).equals(true);
+        t.expect(
+          mockMiddleware.register.args[1]._controller
+        ).equals(MockController);
+      });
+    });
+
+    t.context('When set TrackConfig.relativeUrlRoot', () => {
+      t.beforeEach(() => {
+        TrackConfig.relativeUrlRoot = '/my-app';
+      });
+
+      t.afterEach(() => {
+        TrackConfig.relativeUrlRoot = undefined;
+      });
+
+      t.it('Call middleware.register with relativeUrlRoot', () => {
+        return subject().then((html) => {
+          t.expect(mockMiddleware.register.args[0]).equals('/my-app');
+        });
       });
     });
   });
