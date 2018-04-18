@@ -38,7 +38,7 @@ t.describe('MiddlewareBase', () => {
   });
 
   t.describe('#static', () => {
-    const subject = (() => middleware.static('/'));
+    const subject = (() => middleware.static('./public', '/my-app'));
 
     t.it('Throw error', () => {
       let error = null;
