@@ -45,14 +45,17 @@ t.describe('TrackServer', () => {
     t.it('Call middleware.static', () => {
       return subject().then((html) => {
         t.expect(mockMiddleware.static.callCount).equals(1);
-        t.expect(mockMiddleware.static.args[0]).equals(asset.directory);
+
+        const args = mockMiddleware.static.args;
+        t.expect(args[0]).equals(asset.directory);
+        t.expect(args[1]).equals(TrackConfig.relativeUrlRoot);
       });
     });
 
     t.it('Call middleware.register', () => {
       return subject().then((html) => {
         t.expect(mockMiddleware.register.callCount).equals(1);
-        t.expect(mockMiddleware.register.args[0]).equals('/');
+        t.expect(mockMiddleware.register.args[0]).equals('/my-app');
         t.expect(
           mockMiddleware.register.args[1] instanceof TrackServerRenderer
         ).equals(true);
